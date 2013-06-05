@@ -69,6 +69,7 @@
     <ClCompile Include="RE_ACM.cpp" />
     <ClCompile Include="ShellCommands.cpp" />
     <ClCompile Include="TLE_ACM.cpp" />
+    <ClCompile Include="TLE_Asympt2.cpp" />
     <ClCompile Include="WA_ACM.cpp" />
     <ClCompile Include="WindowsShellCommands.cpp" />
   </ItemGroup>
@@ -82,6 +83,7 @@
     <ClInclude Include="RE_ACM.h" />
     <ClInclude Include="ShellCommands.h" />
     <ClInclude Include="TLE_ACM.h" />
+    <ClInclude Include="TLE_Asympt2.h" />
     <ClInclude Include="WA_ACM.h" />
     <ClInclude Include="WindowsShellCommands.h" />
   </ItemGroup>

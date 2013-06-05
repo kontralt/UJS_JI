@@ -60,6 +60,9 @@
     <ClCompile Include="RE_ACM.cpp">
       <Filter>Файлы исходного кода\JudgeModules</Filter>
     </ClCompile>
+    <ClCompile Include="TLE_Asympt2.cpp">
+      <Filter>Файлы исходного кода\JudgeModules</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WindowsShellCommands.h">
@@ -93,6 +96,9 @@
       <Filter>Заголовочные файлы\JudgeModules</Filter>
     </ClInclude>
     <ClInclude Include="RE_ACM.h">
+      <Filter>Заголовочные файлы\JudgeModules</Filter>
+    </ClInclude>
+    <ClInclude Include="TLE_Asympt2.h">
       <Filter>Заголовочные файлы\JudgeModules</Filter>
     </ClInclude>
   </ItemGroup>

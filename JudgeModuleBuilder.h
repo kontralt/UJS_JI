@@ -7,6 +7,7 @@
 #include "TLE_ACM.h"
 #include "MLE_ACM.h"
 #include "WA_ACM.h"
+#include "TLE_Asympt2.h"
 #include <string>
 #include <map>
 
@@ -20,6 +21,7 @@ public:
 		creationMethods.insert(make_pair(L"TLE_ACM", &TLE_ACM::create));
 		creationMethods.insert(make_pair(L"MLE_ACM", &MLE_ACM::create));
 		creationMethods.insert(make_pair(L"WA_ACM", &WA_ACM::create));
+		creationMethods.insert(make_pair(L"TLE_Asympt2", &TLE_Asympt2::create));
 	}
 
 	bool canBuild(const std::wstring &judgeModuleId) {
