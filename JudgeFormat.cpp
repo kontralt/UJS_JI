@@ -135,7 +135,7 @@ void JudgeFormat::runTests(const std::string &resultFileName, const std::string 
 		int maxTestPoints = 0;
 		double testPoints = 0;	
 		bool terminatingTest = false;	
-		for (int i = 0; !terminatingTest && i < modulesForTest[test].size(); i++) {
+		for (int i = 0; !terminatingAll && !terminatingTest && i < modulesForTest[test].size(); i++) {
 			JudgeModule *module = modules[modulesForTest[test][i].first].first;
 			std::pair<double, std::wstring> verdict = module->verdict();			
 			int maxPoints = modulesForTest[test][i].second;
