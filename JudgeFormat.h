@@ -17,6 +17,7 @@ class JudgeFormat {
 	void clear();
 public:	
 	JudgeFormat(const std::string &filename);
+	~JudgeFormat();
 	void runTests(const std::string &resultFileName, const std::string &logFileName, ShellCommands *shell);
 };
 

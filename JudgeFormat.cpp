@@ -117,6 +117,11 @@ JudgeFormat::JudgeFormat(const std::string &filename) {
 	}
 }
 
+JudgeFormat::~JudgeFormat() {
+	for (std::vector<std::pair<JudgeModule *, JudgeFormat::TerminationType> >::iterator i = modules.begin(); i != modules.end(); i++)
+		delete i->first;
+}
+
 void JudgeFormat::runTests(const std::string &resultFileName, const std::string &logFileName, ShellCommands *shell) {	
 	double totalPoints = 0;
 	FILE *logFile = fopen(logFileName.c_str(), "w");	
@@ -135,17 +140,19 @@ void JudgeFormat::runTests(const std::string &resultFileName, const std::string 
 		int maxTestPoints = 0;
 		double testPoints = 0;	
 		bool terminatingTest = false;	
-		for (int i = 0; !terminatingAll && !terminatingTest && i < modulesForTest[test].size(); i++) {
-			JudgeModule *module = modules[modulesForTest[test][i].first].first;
-			std::pair<double, std::wstring> verdict = module->verdict();			
+		for (int i = 0; i < modulesForTest[test].size(); i++) {
 			int maxPoints = modulesForTest[test][i].second;
+			maxTestPoints += maxPoints;
+			if (terminatingAll || terminatingTest)
+				continue;
+			JudgeModule *module = modules[modulesForTest[test][i].first].first;
+			std::pair<double, std::wstring> verdict = module->verdict();				
 			double points = verdict.first * maxPoints;
 			terminatingTest |= !verdict.first && modules[modulesForTest[test][i].first].second == TEST;
 			terminatingAll |= !verdict.first && modules[modulesForTest[test][i].first].second == ALL;			
 			fwprintf(logFile, L"\tJudge module \"%ls\" (%ls) verdict: ", module->id().c_str(), module->info().c_str());
 			fwprintf(logFile, L"%.4lf of %d\n", points, maxPoints);
-			fwprintf(logFile, L"\t%ls\n\n", verdict.second.c_str());
-			maxTestPoints += maxPoints;
+			fwprintf(logFile, L"\t%ls\n\n", verdict.second.c_str());			
 			testPoints += points;
 		}						
 		if (terminatingAll) {
